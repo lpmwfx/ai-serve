@@ -52,7 +52,49 @@ Interact with the service using terminal commands:
 
 - **`config.json`:** Configuration file for alias definitions and other settings.
 
-## Testing
+## AI Model Selector
+
+The `ai-serve` application supports dynamic alias management, allowing you to define and switch between different language models. You can configure aliases in the `config.json` file, specifying the models you want to use.
+
+### Example Configuration
+
+Here is an example of how to define aliases in the `config.json` file:
+
+```json
+{
+  "aliases": {
+    "openai": {
+      "type": "OpenAI",
+      "apiKey": "your-openai-api-key"
+    },
+    "claude": {
+      "type": "Claude",
+      "apiKey": "your-claude-api-key"
+    }
+  }
+}
+```
+
+You can switch between these models dynamically by sending requests to the appropriate API endpoints.
+
+
+The `ai-serve` application has been compiled into a native executable. You can run it from anywhere in the terminal.
+
+### Usage
+
+To run the `ai-serve` executable, use the following command:
+
+```bash
+ai-serve --allow-net --allow-read --allow-env --import-map import_map.json
+```
+
+### Parameters
+
+- `--allow-net`: Grants network access.
+- `--allow-read`: Grants read access to the file system.
+- `--allow-env`: Grants access to environment variables.
+- `--import-map`: Specifies the import map file to use.
+
 
 Run tests using Deno's built-in test runner:
 ```bash

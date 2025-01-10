@@ -12,7 +12,7 @@ export class OpenAI implements LLM {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": \`Bearer \${this.apiKey}\`, // Correctly formatted template literal
+        "Authorization": "Bearer " + this.apiKey,
       },
       body: JSON.stringify({
         model: "gpt-4",
@@ -21,10 +21,10 @@ export class OpenAI implements LLM {
     });
 
     if (!response.ok) {
-      throw new Error(\`OpenAI API error: \${response.statusText}\`);
+      throw new Error("OpenAI API error: " + response.statusText);
     }
 
     const data = await response.json();
-    return data.choices[0]?.message?.content || ""; // Ensure a value is returned
+    return data.choices[0]?.message?.content || "No content returned"; // Ensure a value is returned
   }
 }
