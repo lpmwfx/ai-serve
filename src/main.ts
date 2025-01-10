@@ -1,17 +1,11 @@
 import { Application } from "https://deno.land/x/oak@v12.6.1/mod.ts";
-import { router } from "./routes/index.ts";
-import { initServices } from "./services/index.ts";
+import { chatRouter } from "./routes/chat.ts";
 
 const app = new Application();
+const port = 8080;
 
-// Initialize services
-await initServices();
+app.use(chatRouter.routes());
+app.use(chatRouter.allowedMethods());
 
-// Use router
-app.use(router.routes());
-app.use(router.allowedMethods());
-
-// Start server
-const PORT = 8000;
-console.log(`Server running on http://localhost:${PORT}`);
-await app.listen({ port: PORT });
+console.log(`Server running on port ${port}`);
+await app.listen({ port });

@@ -9,6 +9,7 @@
     "strict": true
   },
   "imports": {
+    "openai": "https://deno.land/x/openai@v4.4.0/mod.ts",
     "@oak/oak": "jsr:@oak/oak@^17.1.4",
     "ws": "npm:ws@^8.18.0"
   }
