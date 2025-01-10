@@ -1,0 +1,101 @@
+{
+    "project_name": "ai-serve",
+    "description": "A modular and extensible LLM service designed for integrating multiple language models (e.g., OpenAI, Claude) into apps like InkyAI. The service operates as a headless backend with RESTful and WebSocket interfaces.",
+    "goals": [
+      "Develop a headless LLM backend service with extensible architecture.",
+      "Support integration with multiple language models (e.g., GPT-4, Claude).",
+      "Provide RESTful and WebSocket APIs for seamless UI interaction.",
+      "Ensure modularity for alias-based switching between models.",
+      "Enable compatibility with Proton HTML5 UI for dynamic frontend updates."
+    ],
+    "features": [
+      {
+        "name": "Model Abstraction Layer",
+        "description": "Create a flexible layer to integrate and switch between different language models.",
+        "tasks": [
+          "Design a plugin system for model integration.",
+          "Implement a unified API to abstract model-specific details."
+        ]
+      },
+      {
+        "name": "API Endpoints",
+        "description": "Expose RESTful and WebSocket APIs for frontend communication.",
+        "tasks": [
+          "Create endpoints for prompt submission and response retrieval.",
+          "Implement WebSocket support for real-time interaction."
+        ]
+      },
+      {
+        "name": "Alias Management",
+        "description": "Allow developers to define and switch between aliases for LLMs dynamically.",
+        "tasks": [
+          "Design a configuration file for alias definitions.",
+          "Implement runtime alias switching logic."
+        ]
+      },
+      {
+        "name": "Logging and Monitoring",
+        "description": "Provide robust logging and monitoring capabilities for debugging and performance tracking.",
+        "tasks": [
+          "Implement request/response logging.",
+          "Integrate basic analytics for API usage."
+        ]
+      },
+      {
+        "name": "Proton HTML5 UI Integration",
+        "description": "Ensure the backend service integrates smoothly with Proton-based frontend UIs.",
+        "tasks": [
+          "Design a UI-friendly response structure for the APIs.",
+          "Provide examples of rendering responses in Proton HTML5 UI."
+        ]
+      }
+    ],
+    "requirements": {
+      "language": "TypeScript",
+      "framework": "Deno",
+      "dependencies": [
+        "Oak (for REST APIs)",
+        "WebSocket libraries",
+        "LLM SDKs (e.g., OpenAI, Anthropic, etc.)"
+      ]
+    },
+    "step_by_step_plan": [
+      {
+        "step": "Set up the project structure",
+        "tasks": [
+          "Initialize a Deno project.",
+          "Set up folders for controllers, services, and routes."
+        ]
+      },
+      {
+        "step": "Implement the Model Abstraction Layer",
+        "tasks": [
+          "Create a base class/interface for LLM integrations.",
+          "Add support for the first LLM (e.g., GPT-4)."
+        ]
+      },
+      {
+        "step": "Develop API Endpoints",
+        "tasks": [
+          "Create a route for submitting prompts.",
+          "Implement a route for retrieving responses.",
+          "Add WebSocket support."
+        ]
+      },
+      {
+        "step": "Integrate Alias Management",
+        "tasks": [
+          "Design a config file format (e.g., JSON or YAML).",
+          "Implement logic for runtime alias switching."
+        ]
+      },
+      {
+        "step": "Test and Deploy",
+        "tasks": [
+          "Write deno TS Jest unit tests for core functionalities.",
+          "Deploy the service locally or to a cloud platform."
+        ]
+      }
+    ]
+  }
+  

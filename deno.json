@@ -1,0 +1,15 @@
+{
+  "lock": false,
+  "tasks": {
+    "start": "deno run --allow-net --allow-read --allow-env src/main.ts",
+    "test": "deno test --allow-net --allow-read --allow-env"
+  },
+  "compilerOptions": {
+    "lib": ["deno.ns", "deno.unstable", "esnext", "dom"],
+    "strict": true
+  },
+  "imports": {
+    "@oak/oak": "jsr:@oak/oak@^17.1.4",
+    "ws": "npm:ws@^8.18.0"
+  }
+}
