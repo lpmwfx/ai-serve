@@ -1,18 +1,30 @@
 import { LLM } from "./base.ts";
-import { OpenAIClient } from "../deps.ts";
 
 export class OpenAI implements LLM {
-  private openai: OpenAI;
+  private apiKey: string;
 
   constructor(apiKey: string) {
-    this.openai = new OpenAI(apiKey);
+    this.apiKey = apiKey; // Store the API key
   }
 
   async generate(prompt: string): Promise<string> {
-    const response = await this.openai.completions.create({
-      model: "gpt-4",
-      messages: [{ role: "user", content: prompt }],
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": \`Bearer \${this.apiKey}\`, // Correctly formatted template literal
+      },
+      body: JSON.stringify({
+        model: "gpt-4",
+        messages: [{ role: "user", content: prompt }],
+      }),
     });
-    return response.choices[0]?.message?.content || "";
+
+    if (!response.ok) {
+      throw new Error(\`OpenAI API error: \${response.statusText}\`);
+    }
+
+    const data = await response.json();
+    return data.choices[0]?.message?.content || ""; // Ensure a value is returned
   }
 }
